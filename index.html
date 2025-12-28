@@ -19,15 +19,26 @@
             padding-top: 20px;
         }
 
-        .logo {
-            width: 80px;
-            margin-bottom: 15px;
+        /* עיצוב חדש למיכל הלוגואים */
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px; /* הרווח בין הלוגואים */
+            margin-bottom: 25px;
         }
+
+        .logo {
+            height: 60px; /* גובה אחיד לשניהם */
+            width: auto;  /* הרוחב ייקבע אוטומטית לפי הגובה */
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover { transform: scale(1.1); }
 
         h1 { color: #005fb2; margin: 0; font-size: 28px; }
         p.subtitle { color: #666; margin-top: 10px; font-size: 18px; }
 
-        /* הגדרת הגריד */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -36,7 +47,6 @@
             margin: 0 auto;
         }
 
-        /* עיצוב כרטיסייה */
         .card {
             background: white;
             border-radius: 12px;
@@ -53,14 +63,12 @@
             position: relative;
         }
 
-        /* כרטיסייה פעילה */
         .card.active:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,161,224,0.15);
             border-color: #00A1E0;
         }
 
-        /* כרטיסייה לא פעילה */
         .card.disabled {
             opacity: 0.6;
             cursor: not-allowed;
@@ -111,7 +119,13 @@
 <body>
 
     <div class="header">
-        <img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="לוגו" class="logo">
+        
+        <div class="logos-container">
+            <img src="aharai-logo.png" alt="לוגו אחריי" class="logo">
+            
+            <img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="לוגו סיילספורס" class="logo">
+        </div>
+
         <h1>מרכז ההדרכה - אחריי!</h1>
         <p class="subtitle">ברוכים הבאים לפורטל הלמידה הארגוני</p>
     </div>
