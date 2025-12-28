@@ -3,242 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדריך התחברות לסיילספורס - אחריי!</title>
+    <title>פורטל הדרכה - אחריי!</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f6f9;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #333;
-            padding: 20px; /* Added padding for small screens */
-        }
-
-        .container {
-            background-color: white;
-            width: 100%;
-            max-width: 650px; /* Slightly wider */
-            border-radius: 12px; /* Softer corners */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            padding: 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* איזור התמונה בראש העמוד */
-        .header-image {
-            max-width: 150px; /* גודל מקסימלי לתמונה */
-            height: auto;
-            margin-bottom: 25px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        h1 { font-size: 26px; margin-bottom: 15px; color: #005fb2; /* Darker Salesforce Blue */ }
-        p { font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 25px; }
-
-        .step { display: none; animation: fadeIn 0.4s ease-in-out; }
-        .step.active { display: block; }
-
-        .btn {
-            background-color: #0070d2; /* Standard Salesforce Button Blue */
-            color: white;
-            border: none;
-            padding: 12px 35px;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        .btn:hover { background-color: #005fb2; }
-
-        .visual-box {
-            background: #f3f8fc;
-            border: 1px solid #c9dbf1;
             padding: 20px;
-            border-radius: 8px;
-            margin: 25px auto;
-            text-align: right;
-            max-width: 450px;
+            color: #333;
         }
 
-        .trouble-box {
-            background: #fff1f0;
-            border: 1px solid #fecaca;
-            color: #c53030;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 20px auto;
-            text-align: right;
-            font-size: 15px;
-            max-width: 450px;
-            line-height: 1.5;
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        h1 { color: #005fb2; margin: 0; font-size: 28px; }
+        p.subtitle { color: #666; margin-top: 10px; font-size: 18px; }
+
+        /* הגדרת הגריד */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* עיצוב כרטיסייה */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #eef0f2;
+            position: relative;
+        }
+
+        /* כרטיסייה פעילה */
+        .card.active:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,161,224,0.15);
+            border-color: #00A1E0;
+        }
+
+        /* כרטיסייה לא פעילה */
+        .card.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #f9f9f9;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: #eef4f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .card.active .icon-box { background: #e1f5fe; color: #00A1E0; }
+        .card.disabled .icon-box { background: #eee; color: #999; }
+
+        h2 { font-size: 18px; margin: 0 0 10px 0; }
+        p.desc { font-size: 14px; color: #666; margin: 0; line-height: 1.5; }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #eee;
+            color: #777;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .action-link {
+            margin-top: 20px;
+            color: #00A1E0;
+            font-weight: bold;
+            font-size: 14px;
         }
         
-        .trouble-box strong { display: block; margin-bottom: 8px; font-size: 16px; }
-
-        .input-sim {
-            display: block; width: 100%; padding: 12px; margin-bottom: 15px;
-            border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;
-        }
-
-        .progress-bar {
-            position: absolute; top: 0; right: 0; height: 6px;
-            background: linear-gradient(90deg, #0070d2, #00c6ff); /* Gradient bar */
-            width: 0%; transition: width 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .tip {
-            background-color: #fff8e1; border: 1px solid #ffe082; color: #795548;
-            padding: 12px; border-radius: 4px; font-size: 14px; margin-top: 20px;
-        }
-
-        /* עיצובים לשלב האחרון */
-        .waffle-icon { font-size: 30px; color: #555; margin-bottom: 10px;}
-        .final-screen-mockup {
-            background: #f4f6f9; border: 1px solid #d8dde6; height: 150px;
-            position: relative; border-radius: 6px; margin-bottom: 20px;
-        }
-        .mockup-header { background: white; height: 40px; border-bottom: 1px solid #d8dde6; padding: 5px 15px; text-align: left; display: flex; align-items: center;}
-        .mockup-waffle { font-weight: bold; font-size: 24px; color: #0070d2; cursor: pointer; border: 2px solid #0070d2; padding: 0 5px; border-radius: 4px;}
-        .arrow-pointer { font-size: 30px; color: #0070d2; position: absolute; top: 45px; left: 20px; animation: bounce 1s infinite;}
-        @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+        .card.disabled .action-link { display: none; }
 
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="progress-bar" id="progressBar"></div>
-    
-    <img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="לוגו" class="header-image">
-
-
-    <div class="step active" id="step1">
-        <h1>ברוכים הבאים ל-Salesforce!</h1>
-        <p>המדריך הקצר הזה ילווה אתכם בתהליך ההתחברות הראשונית למערכת הניהול של "אחריי!".<br>זה לוקח בדיוק 2 דקות.</p>
-        <div class="tip" style="text-align: center; font-weight: bold;">
-            🖥️ שימו לב: המערכת עובדת בצורה הטובה ביותר בדפדפן Chrome או Edge.
-        </div>
-        <br>
-        <button class="btn" onclick="nextStep(2)">בואו נתחיל</button>
+    <div class="header">
+        <img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="לוגו" class="logo">
+        <h1>מרכז ההדרכה - אחריי!</h1>
+        <p class="subtitle">ברוכים הבאים לפורטל הלמידה הארגוני</p>
     </div>
 
-    <div class="step" id="step2">
-        <h1>שלב 1: הדוא"ל הראשוני</h1>
-        <p>ברגעים אלו קיבלתם מייל לתיבת הארגון עם הכותרת: <br><strong>"Welcome to Salesforce: Verify your account"</strong>.</p>
-        <div class="visual-box">
-            <strong>מאת:</strong> Salesforce Support<br>
-            <strong>נושא:</strong> Welcome to Salesforce<br>
-            <br>
-            היי [שם העובד],<br>
-            המשתמש שלך מוכן. לחץ על הקישור למטה כדי להפעיל אותו.<br>
-            <button style="background: #0070d2; color: white; border:none; padding: 8px 15px; border-radius:4px; margin-top:15px; cursor:default;">Verify Account</button>
+    <div class="grid-container">
+
+        <a href="login-guide.html" class="card active">
+            <div class="icon-box">🔑</div>
+            <h2>התחברות למערכת</h2>
+            <p class="desc">מדריך צעד-אחר-צעד: הגדרת סיסמה, אימות דו-שלבי (MFA) וכניסה ראשונית.</p>
+            <span class="action-link">למדריך המלא ←</span>
+        </a>
+
+        <div class="card disabled">
+            <span class="badge">בקרוב</span>
+            <div class="icon-box">👥</div>
+            <h2>שיוך מדריך לקבוצה</h2>
+            <p class="desc">תהליך צימוד אנשי סגל לקבוצות הפעילות והגדרת הרשאות.</p>
         </div>
-        <button class="btn" onclick="nextStep(3)">לחצתי על הקישור במייל, מה הלאה?</button>
+
+        <div class="card disabled">
+            <span class="badge">בקרוב</span>
+            <div class="icon-box">ℹ️</div>
+            <h2>הסבר על המערכת</h2>
+            <p class="desc">סקירה כללית על המבנה החדש, יכולות המערכת והמודולים העתידיים.</p>
+        </div>
+
+        <div class="card disabled">
+            <span class="badge">בקרוב</span>
+            <div class="icon-box">❓</div>
+            <h2>מה עושים כשנתקעים?</h2>
+            <p class="desc">תשובות לשאלות נפוצות (FAQ) ודרכי יצירת קשר עם התמיכה.</p>
+        </div>
+
     </div>
-
-    <div class="step" id="step3">
-        <h1>שלב 2: יצירת סיסמה</h1>
-        <p>כעת תתבקשו לבחור סיסמה אישית חדשה.</p>
-        <div class="visual-box">
-            <label>סיסמה חדשה:</label>
-            <input type="password" class="input-sim" value="********" readonly>
-            <label>אימות סיסמה:</label>
-            <input type="password" class="input-sim" value="********" readonly>
-        </div>
-        <div class="tip">💡 טיפ: הסיסמה חייבת לכלול לפחות 8 תווים, אותיות ומספרים.</div>
-        <br>
-        <button class="btn" onclick="nextStep(4)">הגדרתי סיסמה</button>
-    </div>
-
-    <div class="step" id="step4">
-        <h1>שלב 3: אימות דו-שלבי (קריטי!)</h1>
-        <p>1. הורידו לנייד את אפליקציית <strong>Salesforce Authenticator</strong>.<br>
-        2. במסך המחשב, בחרו באופציה הראשונה שמופיעה ברשימה.</p>
-        
-        <div class="visual-box" style="text-align: center;">
-            <p>במצב תקין, המחשב יציג צמד מילים, למשל:</p>
-            <h2 style="color: #0070d2; letter-spacing: 1px;">BOLD - OCEAN</h2>
-            <p>הקלידו את המילים האלו באפליקציה בטלפון כשמתבקש.</p>
-        </div>
-
-        <div class="trouble-box">
-            <strong>⛔ נתקלתם בבעיה?</strong>
-            המחשב מבקש מכם <strong>6 ספרות</strong>, אבל האפליקציה בטלפון מראה לכם מילים?
-            <br><br>
-            <strong>הפתרון:</strong> כנראה שבחרתם במחשב באפשרות הלא נכונה. לחצו במחשב על הקישור <b>Choose Another Method</b> (בתחתית המסך), ובחרו מחדש באפשרות: <br>
-            <b style="color: #0070d2;">Use Salesforce Authenticator</b>.
-        </div>
-
-        <button class="btn" onclick="nextStep(5)">הצלחתי לחבר את האפליקציה!</button>
-    </div>
-
-    <div class="step" id="step5">
-        <h1>כל הכבוד! 🎉</h1>
-        <p>ההתחברות בוצעה בהצלחה.</p>
-        <div class="visual-box" style="background: #e3fcef; border-color: #abf5d1; color: #006644; text-align: center;">
-            <strong style="font-size: 18px;">✓ מחובר למערכת</strong><br>
-            ארגון: אחריי!
-        </div>
-        <p>רגע, לפני שמסיימים... איפה מתחילים לעבוד?</p>
-        <button class="btn" onclick="nextStep(6)">תראו לי את מסך הבית</button>
-    </div>
-
-     <div class="step" id="step6">
-        <h1>הצעד הראשון שלכם במערכת</h1>
-        <p>כשתיכנסו, תראו מסך עמוס בנתונים. אל תיבהלו!</p>
-        <p>הדבר הכי חשוב הוא <strong>"תפריט הנקודות" (App Launcher)</strong> בצד ימין למעלה. משם מנווטים בין האפליקציות השונות (למשל: ניהול חניכים, ניהול אירועים).</p>
-        
-        <div class="final-screen-mockup">
-            <div class="mockup-header">
-                <div class="mockup-waffle">:::</div> 
-                <span style="margin-right: 15px; color: #999; font-size: 14px;">חיפוש...</span>
-            </div>
-            <div class="arrow-pointer">⬆️</div>
-            <div style="padding: 20px; color: #999; font-size: 14px;">שאר המסך יופיע כאן...</div>
-        </div>
-
-        <button class="btn" onclick="location.reload()">סיום והתחלה מחדש</button>
-    </div>
-
-</div>
-
-<script>
-    // הגדרת מספר השלבים הכולל
-    const totalSteps = 6;
-
-    function nextStep(stepNumber) {
-        // הסתרת כל השלבים
-        const steps = document.querySelectorAll('.step');
-        steps.forEach(step => step.classList.remove('active'));
-        
-        // הצגת השלב הנוכחי
-        const currentStep = document.getElementById('step' + stepNumber);
-        if (currentStep) {
-            currentStep.classList.add('active');
-        }
-        
-        // עדכון סרגל התקדמות
-        // חישוב מותאם כדי ששלב 1 יהיה 0% ושלב אחרון 100%
-        const progress = ((stepNumber - 1) / (totalSteps - 1)) * 100;
-        document.getElementById('progressBar').style.width = progress + '%';
-    }
-</script>
 
 </body>
 </html>
