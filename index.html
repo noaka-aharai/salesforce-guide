@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מרכז ההדרכה - אחריי!</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; }
+        .container { background-color: white; width: 100%; max-width: 900px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 40px; text-align: center; }
+        .header-logo { max-width: 150px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }
+        h1 { font-size: 32px; margin: 0; color: #005fb2; font-weight: 700; }
+        .subtitle { font-size: 18px; color: #666; margin-top: 10px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 50px; }
+        .menu-card { background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 30px 20px; text-decoration: none; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; height: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.02); cursor: pointer; }
+        .menu-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #0070d2; }
+        .card-icon-circle { width: 90px; height: 90px; border-radius: 50%; background: #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; border: 1px solid #eee; padding: 15px; box-sizing: border-box; }
+        .card-icon-circle img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .card-title { font-weight: bold; font-size: 18px; color: #333; margin-bottom: 8px; }
+        .card-desc { font-size: 14px; color: #777; line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="aharai.logo.png" alt="לוגו אחריי!" class="header-logo">
+    
+    <h1>מרכז ההדרכה של אחריי!</h1>
+    <div class="subtitle">בחר/י את המערכת בה תרצה/י לקבל עזרה</div>
+
+    <div class="menu-grid">
+        
+        <a href="google/index.html" class="menu-card">
+            <div class="card-icon-circle">
+                <img src="google/google.logo.png" alt="Google">
+            </div>
+            <div class="card-title">Google Workspace</div>
+            <div class="card-desc">מייל ארגוני, יומן, דרייב וניהול הרשאות</div>
+        </a>
+
+        <a href="synerion/index.html" class="menu-card">
+            <div class="card-icon-circle">
+                <img src="synerion/synerion.logo.png" alt="Synerion">
+            </div>
+            <div class="card-title">דיווח נוכחות (Synerion)</div>
+            <div class="card-desc">הורדת אפליקציה, דיווח חופשה ותיקון שעות</div>
+        </a>
+
+        <a href="salesforce/index.html" class="menu-card">
+            <div class="card-icon-circle">
+                <img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="Salesforce">
+            </div>
+            <div class="card-title">מערכת Salesforce</div>
+            <div class="card-desc">התחברות ראשונית, אימות כניסה ופתרון תקלות</div>
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>
