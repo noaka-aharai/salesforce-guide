@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פורטל משאבי אנוש - Synerion</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; color: #333; padding: 20px; }
+        
+        /* כותרת עליונה */
+        .header { text-align: center; margin-bottom: 50px; margin-top: 30px; }
+        h1 { font-size: 28px; color: #333; margin: 0; font-weight: 600; }
+        
+        /* כפתור חזרה למעלה */
+        .back-link { position: absolute; top: 20px; right: 20px; text-decoration: none; color: #666; font-size: 14px; display: flex; align-items: center; gap: 5px; font-weight: bold; }
+        .back-link:hover { color: #0070d2; }
+
+        /* גריד הכרטיסיות */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* עיצוב הכרטיס */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 250px;
+            text-decoration: none; /* ביטול קו תחתי */
+            color: inherit;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: #0070d2; }
+        
+        /* כרטיס לא פעיל (אם נרצה להשתמש בעתיד) */
+        .card.disabled { opacity: 0.7; cursor: default; }
+        .card.disabled:hover { transform: none; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-color: #f0f0f0; }
+
+        /* אייקונים */
+        .icon-circle {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: #f0f4f8; color: #5a6c7d;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; margin-bottom: 20px;
+        }
+        
+        /* צבע אייקון כשהכרטיס פעיל */
+        .card .icon-circle { background: #e3fcef; color: #0070d2; }
+
+        h2 { font-size: 20px; margin: 0 0 10px 0; color: #333; }
+        p { font-size: 14px; color: #777; line-height: 1.5; margin: 0 0 20px 0; }
+
+        /* כפתור הלינק */
+        .action-link {
+            color: #0070d2; text-decoration: none; font-weight: bold; font-size: 15px; margin-top: auto;
+        }
+        .card:hover .action-link { text-decoration: underline; }
+
+        /* תגית בקרוב */
+        .badge {
+            position: absolute; top: 15px; left: 15px;
+            background: #f0f0f0; color: #999;
+            font-size: 12px; padding: 4px 8px; border-radius: 4px; font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-link">🏠 תפריט ראשי</a>
+
+    <div class="header">
+        <h1>ניהול משאבי אנוש ונוכחות</h1>
+        <p style="color: #666; margin-top: 10px;">בחרו את הפעולה הרצויה במערכת סנריון</p>
+    </div>
+
+    <div class="grid-container">
+
+        <a href="#" class="card">
+            <div class="icon-circle">👤</div>
+            <h2>הקמת עובד חדש</h2>
+            <p>פתיחת כרטיס עובד, הגדרת תקן ושיוך למחלקה.</p>
+            <span class="action-link">למדריך ←</span>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon-circle">🗓️</div>
+            <h2>יציאה לחל"ד / חל"ת</h2>
+            <p>תהליך דיווח יציאה לחופשת לידה או חופשה ללא תשלום ועדכון סטטוס.</p>
+            <span class="action-link">למדריך ←</span>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon-circle">🚪</div>
+            <h2>סיום העסקה</h2>
+            <p>סגירת כרטיס עובד, טופס טיולים וגמר חשבון.</p>
+            <span class="action-link">למדריך ←</span>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon-circle">💸</div>
+            <h2>דיווח נלווים לשכר</h2>
+            <p>הזנת החזרי נסיעות, הוצאות מיוחדות ודיווח שעות נוספות.</p>
+            <span class="action-link">למדריך ←</span>
+        </a>
+
+    </div>
+
+</body>
+</html>
